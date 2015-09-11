@@ -38,6 +38,7 @@
 		959196E11BA1F7EB008AD851 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959196E01BA1F7EB008AD851 /* JavaScriptCore.framework */; };
 		959196E31BA1F820008AD851 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959196E21BA1F820008AD851 /* ImageIO.framework */; };
 		959196E51BA1F82D008AD851 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 959196E41BA1F82D008AD851 /* libsqlite3.dylib */; };
+		95F61B1C1BA281A80052D9B8 /* AddSharePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F61B1B1BA281A80052D9B8 /* AddSharePlatform.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		959196E01BA1F7EB008AD851 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		959196E21BA1F820008AD851 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		959196E41BA1F82D008AD851 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		95F61B1B1BA281A80052D9B8 /* AddSharePlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSharePlatform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,8 +165,9 @@
 		959196761BA1F5C1008AD851 /* ShareToEasy */ = {
 			isa = PBXGroup;
 			children = (
-				9591969C1BA1F63D008AD851 /* AddShareViewController.swift */,
 				9591969D1BA1F63D008AD851 /* AppDelegate.swift */,
+				95F61B1B1BA281A80052D9B8 /* AddSharePlatform.swift */,
+				9591969C1BA1F63D008AD851 /* AddShareViewController.swift */,
 				9591969E1BA1F63D008AD851 /* HistoryShareViewController.swift */,
 				9591969F1BA1F63D008AD851 /* ShareBrain.swift */,
 				959196D81BA1F727008AD851 /* Main.storyboard */,
@@ -391,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				959196A11BA1F63D008AD851 /* AppDelegate.swift in Sources */,
+				95F61B1C1BA281A80052D9B8 /* AddSharePlatform.swift in Sources */,
 				959196A21BA1F63D008AD851 /* HistoryShareViewController.swift in Sources */,
 				959196A31BA1F63D008AD851 /* ShareBrain.swift in Sources */,
 				959196A01BA1F63D008AD851 /* AddShareViewController.swift in Sources */,
@@ -612,6 +616,7 @@
 				959196971BA1F5C1008AD851 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		959196981BA1F5C1008AD851 /* Build configuration list for PBXNativeTarget "ShareToEasyTests" */ = {
 			isa = XCConfigurationList;
@@ -620,6 +625,7 @@
 				9591969A1BA1F5C1008AD851 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
