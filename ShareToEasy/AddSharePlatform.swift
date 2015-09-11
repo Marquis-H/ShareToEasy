@@ -21,7 +21,8 @@ class AddSharePlatform {
                         ShareSDKConnector.connectWeChat(WXApi.classForCoder())
                         
                     case SSDKPlatformType.TypeQQ:
-                        ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(), tencentOAuthClass: TencentOAuth.classForCoder())
+                        ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(),
+                            tencentOAuthClass: TencentOAuth.classForCoder())
                     default:
                         break
                     }
@@ -41,13 +42,14 @@ class AddSharePlatform {
             
         case SSDKPlatformType.TypeWechat:
             //设置微信应用信息
-            appInfo.SSDKSetupWeChatByAppId("wx4868b35061f87885", appSecret: "64020361b8ec4c99936c0e3999a9f249")
+            appInfo.SSDKSetupWeChatByAppId("wx4868b35061f87885",
+                appSecret: "64020361b8ec4c99936c0e3999a9f249")
             
         case SSDKPlatformType.TypeTencentWeibo:
             //设置腾讯微博应用信息，其中authType设置为只用Web形式授权
             appInfo.SSDKSetupTencentWeiboByAppKey("801307650",
                 appSecret : "ae36f4ee3946e1cbb98d6965b0b2ff5c",
-                redirectUri : "http://www.sharesdk.cn")
+                redirectUri : "http://www.zhbitwiki.com")
             
         case SSDKPlatformType.TypeFacebook:
             //设置Facebook应用信息，其中authType设置为只用SSO形式授权
