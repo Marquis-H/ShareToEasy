@@ -35,6 +35,12 @@ class ShareBrain{
         
     }
     
+    func shareWechatTimeline(){
+        ShareSDK.share(SSDKPlatformType.SubTypeWechatTimeline, parameters: ShareParames)  { (state : SSDKResponseState, userData : [NSObject : AnyObject]!, contentEntity :SSDKContentEntity!, error : NSError!) -> Void in
+            self.isSuccess(state, error: error)
+        }
+    }
+    
     func isSuccess(state: SSDKResponseState, error: NSError!){
         switch state {
         case SSDKResponseState.Success: println("分享成功")

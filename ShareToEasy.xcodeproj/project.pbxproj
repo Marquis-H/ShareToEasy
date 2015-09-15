@@ -39,6 +39,9 @@
 		959196E31BA1F820008AD851 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959196E21BA1F820008AD851 /* ImageIO.framework */; };
 		959196E51BA1F82D008AD851 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 959196E41BA1F82D008AD851 /* libsqlite3.dylib */; };
 		95F61B1C1BA281A80052D9B8 /* AddSharePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F61B1B1BA281A80052D9B8 /* AddSharePlatform.swift */; };
+		95F61B201BA2CB380052D9B8 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F61B1F1BA2CB380052D9B8 /* HistoryTableViewController.swift */; };
+		95F61B221BA2D19B0052D9B8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F61B211BA2D19B0052D9B8 /* HistoryTableViewCell.swift */; };
+		95FF111F1BA2D974008C5FB1 /* HistoryShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FF111E1BA2D974008C5FB1 /* HistoryShare.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +103,9 @@
 		959196E21BA1F820008AD851 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		959196E41BA1F82D008AD851 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		95F61B1B1BA281A80052D9B8 /* AddSharePlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSharePlatform.swift; sourceTree = "<group>"; };
+		95F61B1F1BA2CB380052D9B8 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		95F61B211BA2D19B0052D9B8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		95FF111E1BA2D974008C5FB1 /* HistoryShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryShare.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +175,10 @@
 				95F61B1B1BA281A80052D9B8 /* AddSharePlatform.swift */,
 				9591969C1BA1F63D008AD851 /* AddShareViewController.swift */,
 				9591969E1BA1F63D008AD851 /* HistoryShareViewController.swift */,
+				95F61B1F1BA2CB380052D9B8 /* HistoryTableViewController.swift */,
+				95F61B211BA2D19B0052D9B8 /* HistoryTableViewCell.swift */,
 				9591969F1BA1F63D008AD851 /* ShareBrain.swift */,
+				95FF111E1BA2D974008C5FB1 /* HistoryShare.swift */,
 				959196D81BA1F727008AD851 /* Main.storyboard */,
 				959196821BA1F5C1008AD851 /* Images.xcassets */,
 				959196841BA1F5C1008AD851 /* LaunchScreen.xib */,
@@ -336,6 +345,7 @@
 				TargetAttributes = {
 					959196731BA1F5C1008AD851 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = GYH73D7FMS;
 					};
 					9591968A1BA1F5C1008AD851 = {
 						CreatedOnToolsVersion = 6.4;
@@ -395,7 +405,10 @@
 			files = (
 				959196A11BA1F63D008AD851 /* AppDelegate.swift in Sources */,
 				95F61B1C1BA281A80052D9B8 /* AddSharePlatform.swift in Sources */,
+				95FF111F1BA2D974008C5FB1 /* HistoryShare.swift in Sources */,
+				95F61B221BA2D19B0052D9B8 /* HistoryTableViewCell.swift in Sources */,
 				959196A21BA1F63D008AD851 /* HistoryShareViewController.swift in Sources */,
+				95F61B201BA2CB380052D9B8 /* HistoryTableViewController.swift in Sources */,
 				959196A31BA1F63D008AD851 /* ShareBrain.swift in Sources */,
 				959196A01BA1F63D008AD851 /* AddShareViewController.swift in Sources */,
 			);
@@ -519,6 +532,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShareToEasy/libraries/extends/GooglePlusSDK",
@@ -544,6 +558,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShareToEasy/libraries/extends/GooglePlusSDK",
