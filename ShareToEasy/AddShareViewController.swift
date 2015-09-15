@@ -35,6 +35,14 @@ class AddShareViewController: UIViewController {
             alert.show()
         }
     }
-    @IBAction func shareWeixin() {
+    
+    @IBAction func shareWechatTimeline() {
+        if ShareTextView.text != "" {
+            shareBrain.getShareParames(ShareTextView.text, Images: "shareImg.png", Url: "http://www.baidu.com", Title: "test", Type: "text")
+            shareBrain.shareWechatTimeline()
+        }else{
+            let alert = UIAlertView(title: "分享失败", message: "分享内容不能为空", delegate: self, cancelButtonTitle: "取消")
+            alert.show()
+        }
     }
 }

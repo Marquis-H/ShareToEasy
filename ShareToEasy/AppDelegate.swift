@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //添加分享平台
-        let sharePlatform = AddSharePlatform()
+        var sharePlatform = AddSharePlatform()
         sharePlatform.registerApp()
         // Override point for customization after application launch.
         return true
