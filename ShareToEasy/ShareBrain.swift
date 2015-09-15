@@ -10,14 +10,8 @@ import Foundation
 import CoreData
 
 class ShareBrain{
-    var ShareParames = NSMutableDictionary()
     
-//    //获取需要持久化的数据
-//    let app = UIApplication.sharedApplication().delegate as! AppDelegate
-//    let context = app.managedObjectContext!
-//    
-//    //创建HistoryShare对象
-//    var historyShare = NSEntityDescription.insertNewObjectForEntityForName("HistoryShareData", inManagedObjectContext: context) as! HistoryShare
+    var ShareParames = NSMutableDictionary()
     
     func getShareParames(Text: String, Images: String, Url: String, Title: String, Type: String){
         var types: (SSDKContentType) = SSDKContentType.Text
@@ -56,6 +50,7 @@ class ShareBrain{
         case SSDKResponseState.Success: println("分享成功")
         let alert = UIAlertView(title: "分享成功", message: "分享成功", delegate: self, cancelButtonTitle: "取消")
         alert.show()
+        //对数据持久化
         case SSDKResponseState.Fail: println("分享失败,错误描述:\(error)")
             
         case SSDKResponseState.Cancel: println("分享取消")
@@ -63,4 +58,5 @@ class ShareBrain{
             break
         }
     }
+    
 }

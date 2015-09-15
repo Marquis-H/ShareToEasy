@@ -7,8 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
 class AddShareViewController: UIViewController {
+    
+    lazy var managedObjectContext : NSManagedObjectContext? = {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if let managedObjectContext = appDelegate.managedObjectContext {
+            return managedObjectContext
+        }else {
+            return nil
+        }
+        }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +26,8 @@ class AddShareViewController: UIViewController {
         self.ShareTextView.layer.cornerRadius = 16
         self.ShareTextView.layer.borderColor = self.view.tintColor.CGColor
         // Do any additional setup after loading the view, typically from a nib.
+        //创建HistoryShare对象
+        let historyShare = NSEntityDescription.insertNewObjectForEntityForName("HistoryShareData", inManagedObjectContext: self.managedObjectContext!) as! HistoryShareData
     }
     
     override func didReceiveMemoryWarning() {

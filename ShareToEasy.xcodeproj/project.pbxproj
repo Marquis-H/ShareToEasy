@@ -38,6 +38,9 @@
 		959196E11BA1F7EB008AD851 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959196E01BA1F7EB008AD851 /* JavaScriptCore.framework */; };
 		959196E31BA1F820008AD851 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959196E21BA1F820008AD851 /* ImageIO.framework */; };
 		959196E51BA1F82D008AD851 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 959196E41BA1F82D008AD851 /* libsqlite3.dylib */; };
+		95DBB70B1BA80A73007E6352 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95DBB70A1BA80A73007E6352 /* CoreData.framework */; };
+		95DBB70E1BA80FA6007E6352 /* HistoryShare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95DBB70C1BA80FA6007E6352 /* HistoryShare.xcdatamodeld */; };
+		95DBB7101BA810E2007E6352 /* HistoryShareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DBB70F1BA810E2007E6352 /* HistoryShareData.swift */; };
 		95F61B1C1BA281A80052D9B8 /* AddSharePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F61B1B1BA281A80052D9B8 /* AddSharePlatform.swift */; };
 		95F61B201BA2CB380052D9B8 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F61B1F1BA2CB380052D9B8 /* HistoryTableViewController.swift */; };
 		95F61B221BA2D19B0052D9B8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F61B211BA2D19B0052D9B8 /* HistoryTableViewCell.swift */; };
@@ -102,6 +105,9 @@
 		959196E01BA1F7EB008AD851 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		959196E21BA1F820008AD851 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		959196E41BA1F82D008AD851 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		95DBB70A1BA80A73007E6352 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		95DBB70D1BA80FA6007E6352 /* HistoryShare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HistoryShare.xcdatamodel; sourceTree = "<group>"; };
+		95DBB70F1BA810E2007E6352 /* HistoryShareData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryShareData.swift; sourceTree = "<group>"; };
 		95F61B1B1BA281A80052D9B8 /* AddSharePlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSharePlatform.swift; sourceTree = "<group>"; };
 		95F61B1F1BA2CB380052D9B8 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		95F61B211BA2D19B0052D9B8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95DBB70B1BA80A73007E6352 /* CoreData.framework in Frameworks */,
 				959196E51BA1F82D008AD851 /* libsqlite3.dylib in Frameworks */,
 				959196E31BA1F820008AD851 /* ImageIO.framework in Frameworks */,
 				959196E11BA1F7EB008AD851 /* JavaScriptCore.framework in Frameworks */,
@@ -146,6 +153,7 @@
 		9591966B1BA1F5C1008AD851 = {
 			isa = PBXGroup;
 			children = (
+				95DBB70A1BA80A73007E6352 /* CoreData.framework */,
 				959196E41BA1F82D008AD851 /* libsqlite3.dylib */,
 				959196E21BA1F820008AD851 /* ImageIO.framework */,
 				959196E01BA1F7EB008AD851 /* JavaScriptCore.framework */,
@@ -184,6 +192,8 @@
 				959196841BA1F5C1008AD851 /* LaunchScreen.xib */,
 				959196A41BA1F660008AD851 /* libraries */,
 				959196771BA1F5C1008AD851 /* Supporting Files */,
+				95DBB70C1BA80FA6007E6352 /* HistoryShare.xcdatamodeld */,
+				95DBB70F1BA810E2007E6352 /* HistoryShareData.swift */,
 			);
 			path = ShareToEasy;
 			sourceTree = "<group>";
@@ -407,7 +417,9 @@
 				95F61B1C1BA281A80052D9B8 /* AddSharePlatform.swift in Sources */,
 				95FF111F1BA2D974008C5FB1 /* HistoryShare.swift in Sources */,
 				95F61B221BA2D19B0052D9B8 /* HistoryTableViewCell.swift in Sources */,
+				95DBB70E1BA80FA6007E6352 /* HistoryShare.xcdatamodeld in Sources */,
 				959196A21BA1F63D008AD851 /* HistoryShareViewController.swift in Sources */,
+				95DBB7101BA810E2007E6352 /* HistoryShareData.swift in Sources */,
 				95F61B201BA2CB380052D9B8 /* HistoryTableViewController.swift in Sources */,
 				959196A31BA1F63D008AD851 /* ShareBrain.swift in Sources */,
 				959196A01BA1F63D008AD851 /* AddShareViewController.swift in Sources */,
@@ -643,6 +655,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		95DBB70C1BA80FA6007E6352 /* HistoryShare.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				95DBB70D1BA80FA6007E6352 /* HistoryShare.xcdatamodel */,
+			);
+			currentVersion = 95DBB70D1BA80FA6007E6352 /* HistoryShare.xcdatamodel */;
+			path = HistoryShare.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9591966C1BA1F5C1008AD851 /* Project object */;
 }
