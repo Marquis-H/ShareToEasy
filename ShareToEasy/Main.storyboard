@@ -114,12 +114,12 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G03-9N-s4y">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G03-9N-s4y">
                                                     <rect key="frame" x="485" y="7" width="97" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="97" id="P52-ir-l3g"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -204,11 +204,11 @@
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
         </scene>
-        <!--history-->
+        <!--History-->
         <scene sceneID="Q5X-Es-C1A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hnk-P5-IHt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="history" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="History" image="second" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1mk-P3-8e6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

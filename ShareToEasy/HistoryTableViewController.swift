@@ -7,16 +7,28 @@
 //
 
 import UIKit
+import CoreData
 
 class HistoryTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     //MARK: Properties
     var historys = [HistoryShare]()
-
+    var isFirstTableView: Bool = false
+    
+    lazy var managedObjectContext : NSManagedObjectContext? = {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if let managedObjectContext = appDelegate.managedObjectContext {
+            return managedObjectContext
+        }else {
+            return nil
+        }
+    }()
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        isFirstTableView = true
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 44.0
@@ -30,14 +42,42 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if isFirstTableView == true {
+            isFirstTableView = false
+        }else{
+            historys = []
+            loadHistoryShareMeals()
+            tableView.reloadData()
+        }
+    }
 
     func loadHistoryShareMeals(){
-        let photo1 = UIImage(named: "success")!
-        let photo2 = UIImage(named: "fail")!
-        let meal1 = HistoryShare(hSharePlatformName: "success", photo: photo1, hShareTime: "2015-03-04", hShareText: "aaaaaaaaaaaaaaaaaaaa")!
-        let meal2 = HistoryShare(hSharePlatformName: "fail", photo: photo2, hShareTime: "2015-03-04", hShareText: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")!
-
-        historys += [meal1, meal2]
+        var error: NSError?
+        //声明数据请求
+        var fetchRequest:NSFetchRequest = NSFetchRequest()
+        fetchRequest.fetchOffset = 0
+        //声明一个实体结构
+        var entity:NSEntityDescription? = NSEntityDescription.entityForName("HistoryShareData", inManagedObjectContext: self.managedObjectContext!)
+        //设置数据请求的实体
+        fetchRequest.entity = entity
+        //查询操作
+        var fetchedObjects: [AnyObject]? = self.managedObjectContext?.executeFetchRequest(fetchRequest, error: &error)
+        //遍历查询结果
+        for info:HistoryShareData in fetchedObjects as! [HistoryShareData]{
+            let photo = UIImage(named: "\(info.status)")!
+            let text: String = info.text
+            let dataFormatter = NSDateFormatter()
+            dataFormatter.dateFormat = "MM-dd HH:mm"
+            let time: String = dataFormatter.stringFromDate(info.createdAt)
+            let meal = HistoryShare(hSharePlatformName: "ShareTo=>"+info.platform, photo: photo, hShareTime: time, hShareText: text)!
+            historys += [meal]
+//            self.managedObjectContext?.deleteObject(info)
+        }
+//        if !(self.managedObjectContext?.save(&error) != nil){
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,7 +107,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         cell.HIsSuccess.image = history.photo
         cell.HShareTime.text = history.hShareTime
         cell.HShareText.text = history.hShareText
-
+        cell.userInteractionEnabled = false
         return cell
     }
     

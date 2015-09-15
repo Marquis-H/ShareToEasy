@@ -18,7 +18,7 @@ class AddShareViewController: UIViewController {
         }else {
             return nil
         }
-        }()
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,6 @@ class AddShareViewController: UIViewController {
         self.ShareTextView.layer.cornerRadius = 16
         self.ShareTextView.layer.borderColor = self.view.tintColor.CGColor
         // Do any additional setup after loading the view, typically from a nib.
-        //创建HistoryShare对象
-        let historyShare = NSEntityDescription.insertNewObjectForEntityForName("HistoryShareData", inManagedObjectContext: self.managedObjectContext!) as! HistoryShareData
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,8 +37,9 @@ class AddShareViewController: UIViewController {
     
     @IBOutlet weak var ShareTextView: UITextView!
     @IBAction func shareWeibo() {
+
         if ShareTextView.text != "" {
-            shareBrain.shareWeiboBrain(ShareTextView.text, Images: "shareImg.png", Url: "http://www.baidu.com", Title: "test", Type: "text")
+            shareBrain.shareWeiboBrain(ShareTextView.text, Images: "shareImg.png", Url: "http://www.baidu.com", Title: "test", Type: "text", HSData: self.createHSData(), managedObjectContext: self.managedObjectContext!)
         }else{
             let alert = UIAlertView(title: "分享失败", message: "分享内容不能为空", delegate: self, cancelButtonTitle: "取消")
             alert.show()
@@ -49,10 +48,16 @@ class AddShareViewController: UIViewController {
     
     @IBAction func shareWechatTimeline() {
         if ShareTextView.text != "" {
-            shareBrain.shareWechatTimeline(ShareTextView.text, Images: "shareImg.png", Url: "http://www.baidu.com", Title: "test", Type: "text")
+            shareBrain.shareWechatTimeline(ShareTextView.text, Images: "shareImg.png", Url: "http://www.baidu.com", Title: "test", Type: "text", HSData: self.createHSData(), managedObjectContext: self.managedObjectContext!)
         }else{
             let alert = UIAlertView(title: "分享失败", message: "分享内容不能为空", delegate: self, cancelButtonTitle: "取消")
             alert.show()
         }
+    }
+    
+    func createHSData() -> HistoryShareData{
+        //创建HistoryShare对象
+        var historyShare = NSEntityDescription.insertNewObjectForEntityForName("HistoryShareData", inManagedObjectContext: self.managedObjectContext!) as! HistoryShareData
+        return historyShare
     }
 }
