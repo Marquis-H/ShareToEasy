@@ -28,8 +28,7 @@ class AddShareViewController: UIViewController {
     @IBOutlet weak var ShareTextView: UITextView!
     @IBAction func shareWeibo() {
         if ShareTextView.text != "" {
-            shareBrain.getShareParames(ShareTextView.text, Images: "shareImg.png", Url: "http://www.baidu.com", Title: "test", Type: "text")
-            shareBrain.shareWeiboBrain()
+            shareBrain.shareWeiboBrain(ShareTextView.text, Images: "shareImg.png", Url: "http://www.baidu.com", Title: "test", Type: "text")
         }else{
             let alert = UIAlertView(title: "分享失败", message: "分享内容不能为空", delegate: self, cancelButtonTitle: "取消")
             alert.show()
@@ -38,8 +37,7 @@ class AddShareViewController: UIViewController {
     
     @IBAction func shareWechatTimeline() {
         if ShareTextView.text != "" {
-            shareBrain.getShareParames(ShareTextView.text, Images: "shareImg.png", Url: "http://www.baidu.com", Title: "test", Type: "text")
-            shareBrain.shareWechatTimeline()
+            shareBrain.shareWechatTimeline(ShareTextView.text, Images: "shareImg.png", Url: "http://www.baidu.com", Title: "test", Type: "text")
         }else{
             let alert = UIAlertView(title: "分享失败", message: "分享内容不能为空", delegate: self, cancelButtonTitle: "取消")
             alert.show()
