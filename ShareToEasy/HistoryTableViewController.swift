@@ -35,7 +35,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         let photo1 = UIImage(named: "success")!
         let photo2 = UIImage(named: "fail")!
         let meal1 = HistoryShare(hSharePlatformName: "success", photo: photo1, hShareTime: "2015-03-04", hShareText: "aaaaaaaaaaaaaaaaaaaa")!
-        let meal2 = HistoryShare(hSharePlatformName: "fail", photo: photo2, hShareTime: "2015-03-04", hShareText: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")!
+        let meal2 = HistoryShare(hSharePlatformName: "fail", photo: photo2, hShareTime: "2015-03-04", hShareText: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")!
 
         historys += [meal1, meal2]
     }
