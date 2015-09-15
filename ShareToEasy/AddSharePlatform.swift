@@ -42,8 +42,8 @@ class AddSharePlatform {
             
         case SSDKPlatformType.TypeWechat:
             //设置微信应用信息
-            appInfo.SSDKSetupWeChatByAppId("wx4868b35061f87885",
-                appSecret: "64020361b8ec4c99936c0e3999a9f249")
+            appInfo.SSDKSetupWeChatByAppId("wx72eea6dc0e36b4a5",
+                appSecret: "6b63fe5177ad8cb9812e5f1bf24094bf")
             
         case SSDKPlatformType.TypeTencentWeibo:
             //设置腾讯微博应用信息，其中authType设置为只用Web形式授权
