@@ -55,6 +55,19 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
     }
 
     func loadHistoryShareMeals(){
+        //遍历查询结果
+        for info:HistoryShareData in self.initHistoryShare() as! [HistoryShareData]{
+            let photo = UIImage(named: "\(info.status)")!
+            let text: String = info.text
+            let dataFormatter = NSDateFormatter()
+            dataFormatter.dateFormat = "MM-dd HH:mm"
+            let time: String = dataFormatter.stringFromDate(info.createdAt)
+            let meal = HistoryShare(hSharePlatformName: "ShareTo=>"+info.platform, photo: photo, hShareTime: time, hShareText: text)!
+            historys += [meal]
+        }
+    }
+    
+    func initHistoryShare() -> AnyObject{
         var error: NSError?
         //声明数据请求
         var fetchRequest:NSFetchRequest = NSFetchRequest()
@@ -66,18 +79,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         //查询操作
         var fetchedObjects: [AnyObject]? = self.managedObjectContext?.executeFetchRequest(fetchRequest, error: &error)
         //遍历查询结果
-        for info:HistoryShareData in fetchedObjects as! [HistoryShareData]{
-            let photo = UIImage(named: "\(info.status)")!
-            let text: String = info.text
-            let dataFormatter = NSDateFormatter()
-            dataFormatter.dateFormat = "MM-dd HH:mm"
-            let time: String = dataFormatter.stringFromDate(info.createdAt)
-            let meal = HistoryShare(hSharePlatformName: "ShareTo=>"+info.platform, photo: photo, hShareTime: time, hShareText: text)!
-            historys += [meal]
-//            self.managedObjectContext?.deleteObject(info)
-        }
-//        if !(self.managedObjectContext?.save(&error) != nil){
-//        }
+        return fetchedObjects!;
     }
     
     override func didReceiveMemoryWarning() {
@@ -94,6 +96,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
 
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
+        println("00000")
         return historys.count
     }
 
@@ -107,7 +110,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         cell.HIsSuccess.image = history.photo
         cell.HShareTime.text = history.hShareTime
         cell.HShareText.text = history.hShareText
-        cell.userInteractionEnabled = false
+//        cell.userInteractionEnabled = false
         return cell
     }
     
@@ -120,17 +123,70 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
     }
     */
 
-    /*
+    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+        let object = self.initHistoryShare().objectAtIndexPath(indexPath) as! NSManagedObject
+        cell.textLabel!.text = object.valueForKey("timeStamp")!.description
+    }
+    
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            //遍历查询结果
+            var i: Int = 0
+            for info:HistoryShareData in self.initHistoryShare() as! [HistoryShareData]{
+                if indexPath.row == i{
+                    historys.removeAtIndex(indexPath.row)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                    self.managedObjectContext?.deleteObject(info)
+                    break
+                }
+                i++
+            }
+
+            var error: NSError? = nil
+            if !self.managedObjectContext!.save(&error) {
+                abort()
+            }
+        }
     }
-    */
+
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        switch type {
+        case .Insert:
+            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        case .Delete:
+            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        default:
+            return
+        }
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type {
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+        case .Update:
+            println("")
+        case .Move:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        default:
+            return
+        }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.endUpdates()
+    }
+
 
     /*
     // Override to support rearranging the table view.
