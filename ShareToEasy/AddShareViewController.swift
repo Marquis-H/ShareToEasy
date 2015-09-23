@@ -36,6 +36,12 @@ class AddShareViewController: UIViewController {
     var shareBrain = ShareBrain()
     
     @IBOutlet weak var ShareTextView: UITextView!
+    //点击输入框外区域，取消键盘
+    @IBAction func viewClick(sender: AnyObject) {
+        ShareTextView.resignFirstResponder()
+    }
+    
+    //分享到新浪微博
     @IBAction func shareWeibo() {
 
         if ShareTextView.text != "" {
@@ -45,7 +51,7 @@ class AddShareViewController: UIViewController {
             alert.show()
         }
     }
-    
+    //分享到微信朋友圈
     @IBAction func shareWechatTimeline() {
         if ShareTextView.text != "" {
             shareBrain.shareWechatTimeline(ShareTextView.text, Images: "shareImg.png", Url: "http://www.baidu.com", Title: "test", Type: "text", HSData: self.createHSData(), managedObjectContext: self.managedObjectContext!)
@@ -54,6 +60,16 @@ class AddShareViewController: UIViewController {
             alert.show()
         }
     }
+    //分享到微信
+    @IBAction func shareWechat() {
+        if ShareTextView.text != "" {
+            shareBrain.shareWechat(ShareTextView.text, Images: "shareImg.png", Url: "http://www.baidu.com", Title: "test", Type: "text", HSData: self.createHSData(), managedObjectContext: self.managedObjectContext!)
+        }else{
+            let alert = UIAlertView(title: "分享失败", message: "分享内容不能为空", delegate: self, cancelButtonTitle: "取消")
+            alert.show()
+        }
+    }
+    
     
     @IBAction func allShare() {
         if ShareTextView.text != "" {
@@ -67,7 +83,7 @@ class AddShareViewController: UIViewController {
     
     func createHSData() -> HistoryShareData{
         //创建HistoryShare对象
-        var historyShare = NSEntityDescription.insertNewObjectForEntityForName("HistoryShareData", inManagedObjectContext: self.managedObjectContext!) as! HistoryShareData
+        let historyShare = NSEntityDescription.insertNewObjectForEntityForName("HistoryShareData", inManagedObjectContext: self.managedObjectContext!) as! HistoryShareData
         return historyShare
     }
 }

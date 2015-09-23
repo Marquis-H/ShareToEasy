@@ -41,6 +41,13 @@ class ShareBrain{
     func shareWechatTimeline(Text: String, Images: String, Url: String, Title: String, Type: String, HSData: HistoryShareData, managedObjectContext: NSManagedObjectContext){
         self.getShareParames(Text, Images: Images, Url: Url, Title: Title, Type: Type)
         ShareSDK.share(SSDKPlatformType.SubTypeWechatTimeline, parameters: ShareParames)  { (state : SSDKResponseState, userData : [NSObject : AnyObject]!, contentEntity :SSDKContentEntity!, error : NSError!) -> Void in
+            self.isSuccess(state, Text: Text, Platfort: "wechatTimeline", error: error, HSData: HSData, managedObjectContext: managedObjectContext)
+        }
+    }
+    
+    func shareWechat(Text:String, Images: String, Url: String, Title: String, Type: String, HSData: HistoryShareData, managedObjectContext: NSManagedObjectContext){
+        self.getShareParames(Text, Images: Images, Url: Url, Title: Title, Type: Type)
+        ShareSDK.share(SSDKPlatformType.TypeWechat, parameters: ShareParames) { (state : SSDKResponseState, userData : [NSObject : AnyObject]!, contentEntity :SSDKContentEntity!, error : NSError!) -> Void in
             self.isSuccess(state, Text: Text, Platfort: "wechat", error: error, HSData: HSData, managedObjectContext: managedObjectContext)
         }
     }
@@ -49,9 +56,9 @@ class ShareBrain{
         ShareSDK.showShareActionSheet(View, items: nil, shareParams: ShareParames) { (state : SSDKResponseState, platformType : SSDKPlatformType, userdata : [NSObject : AnyObject]!, contentEnity : SSDKContentEntity!, error : NSError!, Bool end) -> Void in
             
             switch state {
-            case SSDKResponseState.Success: println("分享成功")
-            case SSDKResponseState.Fail:    println("分享失败,错误描述:\(error)")
-            case SSDKResponseState.Cancel:  println("分享取消")
+            case SSDKResponseState.Success: print("分享成功")
+            case SSDKResponseState.Fail:    print("分享失败,错误描述:\(error)")
+            case SSDKResponseState.Cancel:  print("分享取消")
             default:
                 break
             }
@@ -62,7 +69,7 @@ class ShareBrain{
     
     func isSuccess(state: SSDKResponseState, Text: String, Platfort: String, error: NSError!, HSData: HistoryShareData, managedObjectContext: NSManagedObjectContext){
         switch state {
-        case SSDKResponseState.Success: println("分享成功")
+        case SSDKResponseState.Success: print("分享成功")
         let alert = UIAlertView(title: "分享成功", message: "分享成功", delegate: self, cancelButtonTitle: "取消")
         alert.show()
         //对数据持久化
@@ -71,19 +78,26 @@ class ShareBrain{
         HSData.text = Text
         HSData.createdAt = NSDate()
         var error: NSError? = nil
-        if !managedObjectContext.save(&error) {
-            println("不能保存")
+        do {
+            try managedObjectContext.save()
+        } catch let error1 as NSError {
+            error = error1
+            print("不能保存")
             }
-        case SSDKResponseState.Fail: println("分享失败,错误描述:\(error)")
+
+        case SSDKResponseState.Fail: print("分享失败,错误描述:\(error)")
             HSData.status = "fail"
             HSData.platform = Platfort
             HSData.text = Text
             HSData.createdAt = NSDate()
         var error: NSError? = nil
-        if !managedObjectContext.save(&error) {
-                println("不能保存")
+        do {
+            try managedObjectContext.save()
+        } catch let error1 as NSError {
+            error = error1
+            print("不能保存")
             }
-        case SSDKResponseState.Cancel: println("分享取消")
+        case SSDKResponseState.Cancel: print("分享取消")
         default:
             break
         }
