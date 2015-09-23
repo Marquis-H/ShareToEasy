@@ -96,7 +96,6 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
 
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        println("00000")
         return historys.count
     }
 

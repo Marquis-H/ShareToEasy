@@ -45,6 +45,21 @@ class ShareBrain{
         }
     }
     
+    func allShare(View: UIView!, Text: String, Images: String, Url: String, Title: String, Type: String, HSData: HistoryShareData, managedObjectContext: NSManagedObjectContext){
+        ShareSDK.showShareActionSheet(View, items: nil, shareParams: ShareParames) { (state : SSDKResponseState, platformType : SSDKPlatformType, userdata : [NSObject : AnyObject]!, contentEnity : SSDKContentEntity!, error : NSError!, Bool end) -> Void in
+            
+            switch state {
+            case SSDKResponseState.Success: println("分享成功")
+            case SSDKResponseState.Fail:    println("分享失败,错误描述:\(error)")
+            case SSDKResponseState.Cancel:  println("分享取消")
+            default:
+                break
+            }
+        }
+
+        
+    }
+    
     func isSuccess(state: SSDKResponseState, Text: String, Platfort: String, error: NSError!, HSData: HistoryShareData, managedObjectContext: NSManagedObjectContext){
         switch state {
         case SSDKResponseState.Success: println("分享成功")
