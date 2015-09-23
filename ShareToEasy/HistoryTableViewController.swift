@@ -34,7 +34,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorInset = UIEdgeInsets(top: 0, left: CGFloat(2) * 20 + 32, bottom: 0, right: 0)
-        tableView.tableFooterView = UIView(frame: CGRect.zeroRect)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         loadHistoryShareMeals()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -70,14 +70,20 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
     func initHistoryShare() -> AnyObject{
         var error: NSError?
         //声明数据请求
-        var fetchRequest:NSFetchRequest = NSFetchRequest()
+        let fetchRequest:NSFetchRequest = NSFetchRequest()
         fetchRequest.fetchOffset = 0
         //声明一个实体结构
-        var entity:NSEntityDescription? = NSEntityDescription.entityForName("HistoryShareData", inManagedObjectContext: self.managedObjectContext!)
+        let entity:NSEntityDescription? = NSEntityDescription.entityForName("HistoryShareData", inManagedObjectContext: self.managedObjectContext!)
         //设置数据请求的实体
         fetchRequest.entity = entity
         //查询操作
-        var fetchedObjects: [AnyObject]? = self.managedObjectContext?.executeFetchRequest(fetchRequest, error: &error)
+        var fetchedObjects: [AnyObject]?
+        do {
+            fetchedObjects = try self.managedObjectContext?.executeFetchRequest(fetchRequest)
+        } catch let error1 as NSError {
+            error = error1
+            fetchedObjects = nil
+        }
         //遍历查询结果
         return fetchedObjects!;
     }
@@ -144,7 +150,10 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
             }
 
             var error: NSError? = nil
-            if !self.managedObjectContext!.save(&error) {
+            do {
+                try self.managedObjectContext!.save()
+            } catch let error1 as NSError {
+                error = error1
                 abort()
             }
         }
@@ -173,7 +182,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
-            println("")
+            print("")
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
