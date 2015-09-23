@@ -55,6 +55,16 @@ class AddShareViewController: UIViewController {
         }
     }
     
+    @IBAction func allShare() {
+        if ShareTextView.text != "" {
+            shareBrain.allShare(self.view, Text: ShareTextView.text, Images: "shareImg.png", Url: "http://www.baidu.com", Title: "test", Type: "text", HSData: self.createHSData(), managedObjectContext: self.managedObjectContext!)
+        }else{
+            let alert = UIAlertView(title: "分享失败", message: "分享内容不能为空", delegate: self, cancelButtonTitle: "取消")
+            alert.show()
+        }
+    }
+    
+    
     func createHSData() -> HistoryShareData{
         //创建HistoryShare对象
         var historyShare = NSEntityDescription.insertNewObjectForEntityForName("HistoryShareData", inManagedObjectContext: self.managedObjectContext!) as! HistoryShareData
