@@ -47,8 +47,8 @@ class AddSharePlatform {
             
         case SSDKPlatformType.TypeTencentWeibo:
             //设置腾讯微博应用信息，其中authType设置为只用Web形式授权
-            appInfo.SSDKSetupTencentWeiboByAppKey("801307650",
-                appSecret : "ae36f4ee3946e1cbb98d6965b0b2ff5c",
+            appInfo.SSDKSetupTencentWeiboByAppKey("1104804225",
+                appSecret : "soUFnwJ7ZUw7affE",
                 redirectUri : "http://www.zhbitwiki.com")
             
         case SSDKPlatformType.TypeFacebook:
