@@ -67,7 +67,7 @@ class ShareBrain{
         
     }
     
-    func isSuccess(state: SSDKResponseState, Text: String, Platfort: String, error: NSError!, HSData: HistoryShareData, managedObjectContext: NSManagedObjectContext){
+    func isSuccess(state: SSDKResponseState, Text: String, Platfort: String, var error: NSError!, HSData: HistoryShareData, managedObjectContext: NSManagedObjectContext){
         switch state {
         case SSDKResponseState.Success: print("分享成功")
         let alert = UIAlertView(title: "分享成功", message: "分享成功", delegate: self, cancelButtonTitle: "取消")
@@ -77,7 +77,6 @@ class ShareBrain{
         HSData.platform = Platfort
         HSData.text = Text
         HSData.createdAt = NSDate()
-        var error: NSError? = nil
         do {
             try managedObjectContext.save()
         } catch let error1 as NSError {
@@ -90,7 +89,6 @@ class ShareBrain{
             HSData.platform = Platfort
             HSData.text = Text
             HSData.createdAt = NSDate()
-        var error: NSError? = nil
         do {
             try managedObjectContext.save()
         } catch let error1 as NSError {

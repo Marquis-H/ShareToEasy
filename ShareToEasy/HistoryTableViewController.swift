@@ -68,7 +68,6 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func initHistoryShare() -> AnyObject{
-        var error: NSError?
         //声明数据请求
         let fetchRequest:NSFetchRequest = NSFetchRequest()
         fetchRequest.fetchOffset = 0
@@ -81,7 +80,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         do {
             fetchedObjects = try self.managedObjectContext?.executeFetchRequest(fetchRequest)
         } catch let error1 as NSError {
-            error = error1
+            _ = error1
             fetchedObjects = nil
         }
         //遍历查询结果
@@ -148,12 +147,10 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
                 }
                 i++
             }
-
-            var error: NSError? = nil
             do {
                 try self.managedObjectContext!.save()
             } catch let error1 as NSError {
-                error = error1
+                _ = error1
                 abort()
             }
         }
@@ -186,8 +183,6 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-        default:
-            return
         }
     }
     
