@@ -8,10 +8,12 @@
 
 import Foundation
 import CoreData
+import SAWaveToast
 
 class ShareBrain{
     
     var ShareParames = NSMutableDictionary()
+    var delegate:ShareBrainDelegate?
     
     func getShareParames(Text: String, Images: String, Url: String, Title: String, Type: String){
         var types: (SSDKContentType) = SSDKContentType.Text
@@ -27,7 +29,6 @@ class ShareBrain{
             url : NSURL(string:Url),
             title : Title,
             type : types)
-        
     }
     
     func shareWeiboBrain(Text: String, Images: String, Url: String, Title: String, Type: String, HSData: HistoryShareData, managedObjectContext: NSManagedObjectContext){
@@ -70,8 +71,7 @@ class ShareBrain{
     func isSuccess(state: SSDKResponseState, Text: String, Platfort: String, var error: NSError!, HSData: HistoryShareData, managedObjectContext: NSManagedObjectContext){
         switch state {
         case SSDKResponseState.Success: print("分享成功")
-        let alert = UIAlertView(title: "分享成功", message: "分享成功", delegate: self, cancelButtonTitle: "取消")
-        alert.show()
+        self.delegate!.changeLabel("success")
         //对数据持久化
         HSData.status = "success"
         HSData.platform = Platfort
@@ -85,6 +85,7 @@ class ShareBrain{
             }
 
         case SSDKResponseState.Fail: print("分享失败,错误描述:\(error)")
+        self.delegate!.changeLabel("fail")
             HSData.status = "fail"
             HSData.platform = Platfort
             HSData.text = Text
@@ -96,6 +97,7 @@ class ShareBrain{
             print("不能保存")
             }
         case SSDKResponseState.Cancel: print("分享取消")
+            self.delegate!.changeLabel("cancel")
         default:
             break
         }

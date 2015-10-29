@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B6AB75D2A409A1C20E16C16 /* Pods_ShareToEasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C50DCC30C80F9049210FC1AF /* Pods_ShareToEasy.framework */; };
+		950847251BE210580078685A /* protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950847241BE210580078685A /* protocol.swift */; settings = {ASSET_TAGS = (); }; };
 		959196831BA1F5C1008AD851 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959196821BA1F5C1008AD851 /* Images.xcassets */; };
 		959196861BA1F5C1008AD851 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 959196841BA1F5C1008AD851 /* LaunchScreen.xib */; };
 		959196921BA1F5C1008AD851 /* ShareToEasyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959196911BA1F5C1008AD851 /* ShareToEasyTests.swift */; };
@@ -58,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		950847241BE210580078685A /* protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = protocol.swift; sourceTree = "<group>"; };
 		959196741BA1F5C1008AD851 /* ShareToEasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareToEasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		959196781BA1F5C1008AD851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		959196821BA1F5C1008AD851 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -112,6 +115,9 @@
 		95F61B1F1BA2CB380052D9B8 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		95F61B211BA2D19B0052D9B8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		95FF111E1BA2D974008C5FB1 /* HistoryShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryShare.swift; sourceTree = "<group>"; };
+		C50DCC30C80F9049210FC1AF /* Pods_ShareToEasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareToEasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7C21934DCDF2107613813E1 /* Pods-ShareToEasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareToEasy.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareToEasy/Pods-ShareToEasy.release.xcconfig"; sourceTree = "<group>"; };
+		FED21364CA4EDD222A0A4EAC /* Pods-ShareToEasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareToEasy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareToEasy/Pods-ShareToEasy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,7 @@
 				959196D51BA1F660008AD851 /* ShareSDKExtension.framework in Frameworks */,
 				959196D41BA1F660008AD851 /* ShareSDKConnector.framework in Frameworks */,
 				959196D11BA1F660008AD851 /* MOBFoundation.framework in Frameworks */,
+				1B6AB75D2A409A1C20E16C16 /* Pods_ShareToEasy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E05BC63B6B0E592F5559D51 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FED21364CA4EDD222A0A4EAC /* Pods-ShareToEasy.debug.xcconfig */,
+				F7C21934DCDF2107613813E1 /* Pods-ShareToEasy.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9591966B1BA1F5C1008AD851 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +180,8 @@
 				959196761BA1F5C1008AD851 /* ShareToEasy */,
 				9591968E1BA1F5C1008AD851 /* ShareToEasyTests */,
 				959196751BA1F5C1008AD851 /* Products */,
+				3E05BC63B6B0E592F5559D51 /* Pods */,
+				DB19A69DC679CFB7613EFBF1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,6 +212,7 @@
 				959196771BA1F5C1008AD851 /* Supporting Files */,
 				95DBB70C1BA80FA6007E6352 /* HistoryShare.xcdatamodeld */,
 				95DBB70F1BA810E2007E6352 /* HistoryShareData.swift */,
+				950847241BE210580078685A /* protocol.swift */,
 			);
 			path = ShareToEasy;
 			sourceTree = "<group>";
@@ -306,6 +325,14 @@
 			path = WeChatSDK;
 			sourceTree = "<group>";
 		};
+		DB19A69DC679CFB7613EFBF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C50DCC30C80F9049210FC1AF /* Pods_ShareToEasy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -313,9 +340,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 959196951BA1F5C1008AD851 /* Build configuration list for PBXNativeTarget "ShareToEasy" */;
 			buildPhases = (
+				36ED23984AFBC4CC4E2D9B20 /* Check Pods Manifest.lock */,
 				959196701BA1F5C1008AD851 /* Sources */,
 				959196711BA1F5C1008AD851 /* Frameworks */,
 				959196721BA1F5C1008AD851 /* Resources */,
+				04FF6DAFFDB5B66E5B9FBCB7 /* Embed Pods Frameworks */,
+				F0A5A5CCFE6BBDA2F1F4D825 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,6 +440,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		04FF6DAFFDB5B66E5B9FBCB7 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareToEasy/Pods-ShareToEasy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36ED23984AFBC4CC4E2D9B20 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F0A5A5CCFE6BBDA2F1F4D825 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareToEasy/Pods-ShareToEasy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		959196701BA1F5C1008AD851 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -423,6 +501,7 @@
 				959196A21BA1F63D008AD851 /* HistoryShareViewController.swift in Sources */,
 				95DBB7101BA810E2007E6352 /* HistoryShareData.swift in Sources */,
 				95F61B201BA2CB380052D9B8 /* HistoryTableViewController.swift in Sources */,
+				950847251BE210580078685A /* protocol.swift in Sources */,
 				959196A31BA1F63D008AD851 /* ShareBrain.swift in Sources */,
 				959196A01BA1F63D008AD851 /* AddShareViewController.swift in Sources */,
 			);
@@ -544,6 +623,7 @@
 		};
 		959196961BA1F5C1008AD851 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FED21364CA4EDD222A0A4EAC /* Pods-ShareToEasy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -573,6 +653,7 @@
 		};
 		959196971BA1F5C1008AD851 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7C21934DCDF2107613813E1 /* Pods-ShareToEasy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
