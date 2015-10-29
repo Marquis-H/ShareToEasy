@@ -1,0 +1,10 @@
+PODS:
+  - SAWaveToast (0.2.0)
+
+DEPENDENCIES:
+  - SAWaveToast
+
+SPEC CHECKSUMS:
+  SAWaveToast: 64bcf3f0ff1f8147d4c8c18bf51d1594fe22af81
+
+COCOAPODS: 0.39.0
